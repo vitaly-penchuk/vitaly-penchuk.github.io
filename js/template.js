@@ -65,13 +65,15 @@ $(function(){
 
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
-                var permissions = t.getContext();
-                console.log('then',token, permissions);
+                /*
                 return t.set('organization', 'private', 'token', token)
                     .catch(t.NotHandled, function() {
                         console.log('then',token);
                         return t.set('board', 'private', 'token', token);
                     });
+                */
+                localStorage.setItem('token', token);
+                return true
             })
             .then(function() {
                 // now that the token is stored, we can close this popup
