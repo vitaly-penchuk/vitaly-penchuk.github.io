@@ -34,11 +34,13 @@ var isTrelloAuthorized = function () {
 }
 
 var cardButtonCallback = function(t){
-    return t.popup({
+    return t.modal({
         title: 'Timer',
         url: './timer.html',
         height: 500,
-        width: 500,
+        fullscreen: false,
+        accentColor: '#F2D600'
+        //callback: () => console.log('Goodbye.'),
     });
 };
 
@@ -54,7 +56,7 @@ TrelloPowerUp.initialize({
     return t.popup({
       title: 'Settings',
       url: './settings.html',
-      height: 184
+      height: 184,
     });
   }
 });
