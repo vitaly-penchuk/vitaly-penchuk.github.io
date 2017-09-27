@@ -1,18 +1,19 @@
 /* global TrelloPowerUp */
 var GRAY_ICON = './images/icon-gray.svg';
 
+var tokenLooksValid = function(token) {
+    return /^[0-9a-f]{64}$/.test(token);
+};
+
 var cardButtonCallback = function(tt){
     if(!localStorage.getItem('token')){
-        var Promise = window.TrelloPowerUp.Promise;
-        var t = window.TrelloPowerUp.iframe();
 
+        var t = window.TrelloPowerUp.iframe();
+        console.log(t.getContext());
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
             '&return_url='+encodeURIComponent(window.location.origin+'/auth.html');
 
-        var tokenLooksValid = function(token) {
-            return /^[0-9a-f]{64}$/.test(token);
-        };
 
         var authorizeOpts = {
             height: 680,
@@ -22,13 +23,6 @@ var cardButtonCallback = function(tt){
 
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
-                /*
-                 return t.set('organization', 'private', 'token', token)
-                 .catch(t.NotHandled, function() {
-                 console.log('then',token);
-                 return t.set('board', 'private', 'token', token);
-                 });
-                 */
                 localStorage.setItem('token', token);
                 return true
             })
