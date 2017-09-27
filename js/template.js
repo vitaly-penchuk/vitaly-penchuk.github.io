@@ -64,9 +64,9 @@ $(function(){
             validToken: tokenLooksValid
         };
 
-        var permissions = t.getContext().permissions;
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
+                var permissions = t.getContext().permissions;
                 console.log('then',token, permissions);
                 return t.set('organization', 'private', 'token', token)
                     .catch(t.NotHandled, function() {
