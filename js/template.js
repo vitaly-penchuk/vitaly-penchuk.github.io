@@ -3,8 +3,7 @@ var GRAY_ICON = './images/icon-gray.svg';
 
 var cardButtonCallback = function(t){
     if(!localStorage.getItem('token')){
-        var Promise = TrelloPowerUp.Promise;
-        var t = TrelloPowerUp.iframe();
+        var Promise = window.TrelloPowerUp.Promise;
 
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
