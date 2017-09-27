@@ -44,34 +44,37 @@ TrelloPowerUp.initialize({
   }
 });
 
-var t = TrelloPowerUp.iframe();
-var Promise = TrelloPowerUp.Promise;
+$(function(){
+    var t = TrelloPowerUp.iframe();
+    var Promise = TrelloPowerUp.Promise;
 
-var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
-    '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
-    '&return_url='+window.location.href;
+    var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
+        '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
+        '&return_url='+window.location.href;
 
-var tokenLooksValid = function(token) {
-  console.log(token);
-    return /^[0-9a-f]{64}$/.test(token);
-}
+    var tokenLooksValid = function(token) {
+        console.log(token);
+        return /^[0-9a-f]{64}$/.test(token);
+    };
 
-var authorizeOpts = {
-    height: 680,
-    width: 580,
-    validToken: tokenLooksValid
-};
+    var authorizeOpts = {
+        height: 680,
+        width: 580,
+        validToken: tokenLooksValid
+    };
 
-t.authorize(oauthUrl, authorizeOpts)
-    .then(function(token) {
-        return t.set('organization', 'private', 'token', token)
-            .catch(t.NotHandled, function() {
-                // fall back to storing at board level
-                return t.set('board', 'private', 'token', token);
-            });
-    })
-    .then(function() {
-        // now that the token is stored, we can close this popup
-        // you might alternatively choose to open a new popup
-        return t.closePopup();
-    });
+    t.authorize(oauthUrl, authorizeOpts)
+        .then(function(token) {
+            return t.set('organization', 'private', 'token', token)
+                .catch(t.NotHandled, function() {
+                    // fall back to storing at board level
+                    return t.set('board', 'private', 'token', token);
+                });
+        })
+        .then(function() {
+            // now that the token is stored, we can close this popup
+            // you might alternatively choose to open a new popup
+            return t.closePopup();
+        });
+
+});
