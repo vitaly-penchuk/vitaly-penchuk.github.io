@@ -1,7 +1,7 @@
 {
   "name": "A MoneyPenny Trello App",
   "description": "",
-  "details": "Sample MoneyPenny App",
+  "details": "Sample MoneyPenny App For testing timer functionality",
   "icon": {
     "url": "./images/favicon.png"
   },
