@@ -63,9 +63,10 @@ $(function(){
             validToken: tokenLooksValid
         };
 
+        var permissions = t.getContext().permissions;
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
-                console.log('then',token);
+                console.log('then',token, permissions);
                 return t.set('organization', 'private', 'token', token)
                     .catch(t.NotHandled, function() {
                         console.log('then',token);
@@ -75,7 +76,7 @@ $(function(){
             .then(function() {
                 // now that the token is stored, we can close this popup
                 // you might alternatively choose to open a new popup
-                //return t.closePopup();
+                return t.closePopup();
             });
     }
 });
