@@ -7,7 +7,6 @@ var tokenLooksValid = function(token) {
 
 var isTrelloAuthorized = function () {
     if(!localStorage.getItem('token')){
-
         var t = window.TrelloPowerUp.iframe();
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
@@ -26,8 +25,6 @@ var isTrelloAuthorized = function () {
                 return true
             })
             .then(function() {
-                // now that the token is stored, we can close this popup
-                // you might alternatively choose to open a new popup
                 return t.closePopup();
             });
         return false;
@@ -37,11 +34,11 @@ var isTrelloAuthorized = function () {
 }
 
 var cardButtonCallback = function(t){
-    var context = t.getContext();
-    console.log(JSON.stringify(context, null, 2));
-    if(isTrelloAuthorized()){
-        console.log(123);
-    }
+    return t.popup({
+        title: 'Timer',
+        url: './timer.html',
+        height: 184
+    });
 };
 
 TrelloPowerUp.initialize({
