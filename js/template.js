@@ -1,9 +1,10 @@
 /* global TrelloPowerUp */
 var GRAY_ICON = './images/icon-gray.svg';
 
-var cardButtonCallback = function(t){
+var cardButtonCallback = function(tt){
     if(!localStorage.getItem('token')){
         var Promise = window.TrelloPowerUp.Promise;
+        var t = window.TrelloPowerUp.iframe();
 
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
