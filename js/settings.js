@@ -25,8 +25,6 @@ t.render(function(){
   })
 });
 
-Trello.authorize({type:'popup'});
-
 document.getElementById('save').addEventListener('click', function(){
   return t.set('board', 'private', 'vegetable', vegetableSelector.value)
   .then(function(){
@@ -35,4 +33,8 @@ document.getElementById('save').addEventListener('click', function(){
   .then(function(){
     t.closePopup();
   })
-})
+});
+
+$(function () {
+
+});
