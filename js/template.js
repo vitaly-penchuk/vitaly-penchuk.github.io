@@ -45,10 +45,9 @@ TrelloPowerUp.initialize({
 });
 
 $(function(){
-    console.log(localStorage.getItem('token'));
     if(!localStorage.getItem('token')){
-        var Promise = TrelloPowerUp.Promise;
-        var t = TrelloPowerUp.iframe();
+        var Promise = window.TrelloPowerUp.Promise;
+        var t = window.TrelloPowerUp.iframe();
 
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
