@@ -41,11 +41,9 @@ TrelloPowerUp.initialize({
       url: './settings.html',
       height: 184
     });
-  },
-    'callback': function (t, options) {
-      console.log(t, options);
-      return true;
-    }
+  }
+}).then(function (data) {
+    console.log(data);
 });
 
 $(function(){
