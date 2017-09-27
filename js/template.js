@@ -45,6 +45,7 @@ TrelloPowerUp.initialize({
 });
 
 $(function(){
+    console.log(localStorage.getItem('token'));
     if(!localStorage.getItem('token')){
         var Promise = TrelloPowerUp.Promise;
         var t = TrelloPowerUp.iframe();
