@@ -9,7 +9,6 @@ var cardButtonCallback = function(tt){
     if(!localStorage.getItem('token')){
 
         var t = window.TrelloPowerUp.iframe();
-        console.log(t.getContext());
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
             '&return_url='+encodeURIComponent(window.location.origin+'/auth.html');
@@ -23,6 +22,7 @@ var cardButtonCallback = function(tt){
 
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
+                console.log(t.getContext());
                 localStorage.setItem('token', token);
                 return true
             })
