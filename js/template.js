@@ -22,7 +22,6 @@ var isTrelloAuthorized = function () {
 
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
-                console.log(t.getContext());
                 localStorage.setItem('token', token);
                 return true
             })
@@ -37,7 +36,8 @@ var isTrelloAuthorized = function () {
     }
 }
 
-var cardButtonCallback = function(tt){
+var cardButtonCallback = function(t){
+    console.log(t.getContext());
     if(isTrelloAuthorized()){
         console.log(123);
     }
