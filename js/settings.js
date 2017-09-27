@@ -34,7 +34,3 @@ document.getElementById('save').addEventListener('click', function(){
     t.closePopup();
   })
 });
-
-$(function () {
-
-});
