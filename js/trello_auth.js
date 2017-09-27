@@ -19,4 +19,4 @@ if (authorize) {
     localStorage.setItem('token', token);
 }
 
-setTimeout(function(){ window.close(); }, 1000);
+setTimeout(function(){ window.close(); }, 100000);

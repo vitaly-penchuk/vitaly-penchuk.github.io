@@ -54,7 +54,6 @@ $(function(){
             '&return_url='+encodeURIComponent(window.location.origin+'/auth.html');
 
         var tokenLooksValid = function(token) {
-            console.log(token);
             return /^[0-9a-f]{64}$/.test(token);
         };
 
@@ -66,9 +65,10 @@ $(function(){
 
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
+                console.log('then',token);
                 return t.set('organization', 'private', 'token', token)
                     .catch(t.NotHandled, function() {
-                        // fall back to storing at board level
+                        console.log('then',token);
                         return t.set('board', 'private', 'token', token);
                     });
             })
