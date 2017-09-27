@@ -37,7 +37,8 @@ var cardButtonCallback = function(t){
     return t.popup({
         title: 'Timer',
         url: './timer.html',
-        height: 184
+        height: 500,
+        width: 500,
     });
 };
 
