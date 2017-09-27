@@ -37,7 +37,8 @@ var isTrelloAuthorized = function () {
 }
 
 var cardButtonCallback = function(t){
-    console.log(t.getContext());
+    var context = t.getContext();
+    console.log(JSON.stringify(context, null, 2));
     if(isTrelloAuthorized()){
         console.log(123);
     }
