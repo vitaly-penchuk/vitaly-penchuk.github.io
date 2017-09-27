@@ -51,7 +51,7 @@ $(function(){
 
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
-            '&return_url='+window.location.origin+'/auth.html';
+            '&return_url='+encodeURIComponent(window.location.origin+'/auth.html');
 
         var tokenLooksValid = function(token) {
             console.log(token);
