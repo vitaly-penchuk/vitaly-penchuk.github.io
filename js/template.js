@@ -46,8 +46,8 @@ TrelloPowerUp.initialize({
 
 $(function(){
     if(!localStorage.getItem('token')){
-        var t = TrelloPowerUp.iframe();
         var Promise = TrelloPowerUp.Promise;
+        var t = TrelloPowerUp.iframe();
 
         var oauthUrl = 'https://trello.com/1/authorize?expiration=never' +
             '&name=Trello%20for%20Chrome&scope=read,write,account&key='+Trello.key()+'&callback_method=fragment' +
