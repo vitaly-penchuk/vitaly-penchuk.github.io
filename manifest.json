@@ -1,0 +1,29 @@
+{
+  "name": "A MoneyPenny Trello App",
+  "description": "",
+  "details": "Sample MoneyPenny App",
+  "icon": {
+    "url": "./images/favicon.png"
+  },
+  "author": "Moneypenny",
+  "capabilities": [
+    "attachment-sections",
+    "attachment-thumbnail",
+    "board-buttons",
+    "callback",
+    "card-badges",
+    "card-buttons",
+    "card-detail-badges",
+    "card-from-url",
+    "format-url",
+    "show-settings"
+  ],
+  "connectors": {
+    "iframe": {
+      "url": "./index.html"
+    }
+  },
+  "recommend": {
+    "urls": []
+  }
+}
