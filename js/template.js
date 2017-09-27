@@ -5,7 +5,7 @@ var tokenLooksValid = function(token) {
     return /^[0-9a-f]{64}$/.test(token);
 };
 
-var cardButtonCallback = function(tt){
+var isTrelloAuthorized = function () {
     if(!localStorage.getItem('token')){
 
         var t = window.TrelloPowerUp.iframe();
@@ -31,6 +31,15 @@ var cardButtonCallback = function(tt){
                 // you might alternatively choose to open a new popup
                 return t.closePopup();
             });
+        return false;
+    }else{
+        return true;
+    }
+}
+
+var cardButtonCallback = function(tt){
+    if(isTrelloAuthorized()){
+        console.log(123);
     }
 };
 
