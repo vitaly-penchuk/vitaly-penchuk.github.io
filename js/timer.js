@@ -1,10 +1,9 @@
 $(function(){
     var options = {
         error : function (data) {
-            console.log(data);
             $('#login-error').html(data.message);
         }
-    }
+    };
     $('#login-btn').on('click',function (e) {
         e.preventDefault();
         var node = $(this);
