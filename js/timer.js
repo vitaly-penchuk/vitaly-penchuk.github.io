@@ -1,6 +1,7 @@
 $(function(){
     var options = {
         error : function (data) {
+            console.log(data);
             $('#login-error').html(data.message);
         }
     }
@@ -15,7 +16,7 @@ $(function(){
             method: 'POST',
             error: function (jqXHR, status, error) {
                 var response = jqXHR.responseJSON;
-                options.error(response);
+                options.error(response.data);
             },
             success: function (data, status, jqXHR) {
                 console.log(data);
