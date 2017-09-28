@@ -5,7 +5,7 @@ $(function(){
         var form = node.closest('form');
         var params = form.serialize();
         $.ajax({
-            url: 'http://api.moneypennybox.com/'+form.find('#tenant_name').val()+'/login',
+            url: 'http://api.moneypenny.me/'+form.find('#tenant_name').val()+'/login',
             data: params,
             method: 'POST',
             error: function (jqXHR, status, error) {
