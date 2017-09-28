@@ -1,5 +1,6 @@
 /* global TrelloPowerUp */
 var GRAY_ICON = './images/icon-gray.svg';
+var MP_ICON = './images/timer.png';
 
 var tokenLooksValid = function(token) {
     return /^[0-9a-f]{64}$/.test(token);
