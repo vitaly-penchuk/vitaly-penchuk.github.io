@@ -35,7 +35,7 @@ var isTrelloAuthorized = function () {
 }
 
 var cardButtonCallback = function(t){
-    if(!localStorage.getItem('mp_token')){
+    if(localStorage.getItem('mp_token')){
 
     }else{
         return t.modal({
