@@ -35,14 +35,17 @@ var isTrelloAuthorized = function () {
 }
 
 var cardButtonCallback = function(t){
-    return t.modal({
-        title: 'Timer',
-        url: './timer.html',
-        height: 500,
-        fullscreen: false,
-        accentColor: '#F2D600'
-        //callback: () => console.log('Goodbye.'),
-    });
+    if(!localStorage.getItem('mp_token')){
+
+    }else{
+        return t.modal({
+            title: 'Timer',
+            url: './timer.html',
+            height: 500,
+            fullscreen: false,
+            accentColor: '#e27702'
+        });
+    }
 };
 
 TrelloPowerUp.initialize({

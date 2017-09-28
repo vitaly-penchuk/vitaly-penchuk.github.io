@@ -1,4 +1,9 @@
 $(function(){
+    var options = {
+        error : function (data) {
+            $('#login-error').html(data.message);
+        }
+    }
     $('#login-btn').on('click',function (e) {
         e.preventDefault();
         var node = $(this);
@@ -10,11 +15,13 @@ $(function(){
             method: 'POST',
             error: function (jqXHR, status, error) {
                 var response = jqXHR.responseJSON;
-                $('#login-error').html(response.data.message);
+                options.error(response);
             },
             success: function (data, status, jqXHR) {
-                console.log(data, status, jqXHR);
+                console.log(data);
             }
         });
     });
+
+
 });
