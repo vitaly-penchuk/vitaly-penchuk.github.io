@@ -8,6 +8,7 @@ $(function(){
             url: 'https://api.moneypenny.me/'+form.find('#tenant_name').val()+'/login',
             data: params,
             method: 'POST',
+            dataType: 'jsonp',
             error: function (jqXHR, status, error) {
                 console.log(jqXHR.responseJSON, status, error);
             },
