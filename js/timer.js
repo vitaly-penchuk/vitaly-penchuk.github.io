@@ -10,6 +10,7 @@ $(function(){
             method: 'POST',
             error: function (jqXHR, status, error) {
                 var response = jqXHR.responseJSON;
+                console.log(response.message);
                 $('#login-error').html(response.message);
             },
             success: function (data, status, jqXHR) {
