@@ -48,7 +48,7 @@ var cardButtonCallback = function(t){
 TrelloPowerUp.initialize({
   'card-buttons': function(t, options) {
     return [{
-      icon: GRAY_ICON,
+      icon: MP_ICON,
       text: 'Start timer',
       callback: cardButtonCallback
     }];
