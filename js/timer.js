@@ -9,7 +9,8 @@ $(function(){
             data: params,
             method: 'POST',
             error: function (jqXHR, status, error) {
-                console.log(jqXHR.responseJSON, status, error);
+                var response = jqXHR.responseJSON;
+                $('#login-error').html(response.message);
             },
             success: function (data, status, jqXHR) {
                 console.log(data, status, jqXHR);
