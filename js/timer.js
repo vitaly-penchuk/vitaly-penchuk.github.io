@@ -18,7 +18,12 @@ $(function(){
                 options.error(response.data);
             },
             success: function (data, status, jqXHR) {
-                console.log(data);
+                var data = data.data;
+                var mp_token = {
+                    tenant: $('#tenant_name').val(),
+                    token: data.access_token
+                };
+                localStorage.setItem('mp_token', JSON.stringify(mp_token));
             }
         });
     });

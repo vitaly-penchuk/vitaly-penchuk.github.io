@@ -1,5 +1,3 @@
-
-
 var mpAjax = function (options) {
     var default_options = {
         method: 'GET',
@@ -22,4 +20,16 @@ var mpAjax = function (options) {
             console.log(data);
         }
     })
+};
+
+
+var openLoginModal = function () {
+    var t = window.TrelloPowerUp.iframe();
+    return t.modal({
+        title: 'Timer',
+        url: './timer.html',
+        height: 500,
+        fullscreen: false,
+        accentColor: '#e27702'
+    });
 };

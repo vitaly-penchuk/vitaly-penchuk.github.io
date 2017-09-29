@@ -19,7 +19,6 @@ var isTrelloAuthorized = function () {
             width: 580,
             validToken: tokenLooksValid
         };
-
         t.authorize(oauthUrl, authorizeOpts)
             .then(function(token) {
                 localStorage.setItem('token', token);
@@ -34,17 +33,13 @@ var isTrelloAuthorized = function () {
     }
 }
 
+
+
 var cardButtonCallback = function(t){
     if(localStorage.getItem('mp_token')){
 
     }else{
-        return t.modal({
-            title: 'Timer',
-            url: './timer.html',
-            height: 500,
-            fullscreen: false,
-            accentColor: '#e27702'
-        });
+        return openLoginModal();
     }
 };
 
@@ -60,11 +55,7 @@ TrelloPowerUp.initialize({
     return t.popup({
       title: 'Settings',
       url: './settings.html',
-      height: 184,
+      height: 184
     });
   }
-});
-
-$(function(){
-
 });
