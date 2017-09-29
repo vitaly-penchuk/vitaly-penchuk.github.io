@@ -15,7 +15,8 @@ var _mpAjax = function (options) {
         method: 'GET',
         params: {},
         success: undefined,
-        error: undefined
+        error: undefined,
+        async: true,
     };
     options = $.extend(true, default_options,options);
     options.url = MP_API_URL + _MP_TOKEN.tenant + '/' + options.url +'?token=' + _MP_TOKEN.token;
@@ -23,6 +24,7 @@ var _mpAjax = function (options) {
         url: options.url,
         method: options.method,
         data: options.params,
+        async: options.async,
         error: function (jqXHR) {
             var response = jqXHR.responseJSON;
             if(options.error){
