@@ -11,28 +11,31 @@
     <form id="login-form" method="post">
         <div class="row">
             <div class="col-xs-12 col-lg-12 col-md-12 form-group">
-                <label for="tenant_name">
-                    Tenant name*
+                <label for="project_id">
+                    Project
                 </label>
-                <input type="text" id="tenant_name" name="tenant_name" class="form-control">
+                <select class="form-control" id="project_id" name="t[project_id]">
+
+                </select>
             </div>
             <div class="col-xs-12 col-lg-12 col-md-12 form-group">
-                <label for="email">
-                    Username/email*
+                <label for="task_id">
+                    Task
                 </label>
-                <input type="text" id="email" name="email" class="form-control">
+                <select class="form-control" id="task_id" name="t[task_id]">
+
+                </select>
             </div>
             <div class="col-xs-12 col-lg-12 col-md-12 form-group">
-                <label for="password">
-                    Password
+                <label for="notes">
+                    Task
                 </label>
-                <input type="password" id="password" name="password" class="form-control">
+                <textarea class="form-control" id="notes" name="t[notes]">
+
+                </textarea>
             </div>
             <div class="col-xs-12 col-lg-12 col-md-12 form-group">
-                <div id="login-error" style="color: red;"></div>
-            </div>
-            <div class="col-xs-12 col-lg-12 col-md-12 form-group">
-                <input type="submit" id="login-btn" value="Login" class="btn btn-success pull-right">
+                <input type="submit" id="start-timer" value="Start Timer" class="btn btn-success pull-right">
             </div>
         </div>
     </form>

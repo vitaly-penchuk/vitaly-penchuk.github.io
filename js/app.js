@@ -27,6 +27,9 @@ var _mpAjax = function (options) {
         async: options.async,
         error: function (jqXHR) {
             var response = jqXHR.responseJSON;
+            if (response.data.status == 401) {
+                localStorage.removeItem('mp_token');
+            }
             if(options.error){
                 return options.error(response.data);
             }
