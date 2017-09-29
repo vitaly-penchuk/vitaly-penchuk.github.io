@@ -1,4 +1,10 @@
-var mpAjax = function (options) {
+$.ajaxSetup({
+    complete : function (jqXHR,textStatus) {
+        console.log(jqXHR,textStatus);
+    }
+});
+
+var _mpAjax = function (options) {
     var default_options = {
         method: 'GET',
         url: '',
@@ -10,14 +16,16 @@ var mpAjax = function (options) {
     $.ajax({
         method: method,
         data: params,
-        error: function (jqXHR, status, error) {
+        error: function (jqXHR) {
             var response = jqXHR.responseJSON;
             if(options.error){
-                options.error(response.data);
+                return options.error(response.data);
             }
         },
         success: function (data, status, jqXHR) {
-            console.log(data);
+            if(options.success){
+                return options.success(data);
+            }
         }
     })
 };
@@ -31,6 +39,25 @@ var openLoginModal = function (t) {
         fullscreen: false,
         accentColor: '#e27702'
     });
+};
+
+var openTimer = function (t) {
+    return t.popup({
+        title: 'Timer',
+        url: './timer.html',
+        height: 184
+    });
+};
+
+var isMPAutorized = function () {
+    var result = false;
+    if(localStorage.getItem('mp_token')){
+        var mp_token = JSON.parse(localStorage.getItem('mp_token'));
+        if(mp_token.hasAttribute('tenant') && mp_token.hasAttribute('token')){
+
+        }
+    }
+    return result;
 };
 
 $(function(){
@@ -60,8 +87,11 @@ $(function(){
                 };
                 localStorage.setItem('mp_token', JSON.stringify(mp_token));
                 var t = window.TrelloPowerUp.iframe();
+                t.storeSecret('mp_token',mp_token);
                 t.closeModal();
             }
         });
     });
 });
+
+

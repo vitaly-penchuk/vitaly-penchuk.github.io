@@ -31,7 +31,7 @@ var isTrelloAuthorized = function () {
     }else{
         return true;
     }
-}
+};
 
 
 
@@ -45,6 +45,9 @@ var cardButtonCallback = function(t){
 
 TrelloPowerUp.initialize({
   'card-buttons': function(t, options) {
+    if(localStorage.getItem('mp_token')){
+
+    }
     return [{
       icon: MP_ICON,
       text: 'Start timer',
