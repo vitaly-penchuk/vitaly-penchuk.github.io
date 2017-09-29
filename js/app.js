@@ -48,7 +48,7 @@ var openLoginModal = function (t) {
     });
 };
 
-var openTimer = function (t) {
+var openTimerCallback = function (t) {
     return t.popup({
         title: 'Timer',
         url: './timer.html',

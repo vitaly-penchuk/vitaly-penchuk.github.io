@@ -55,12 +55,9 @@ TrelloPowerUp.initialize({
             error: function (data) {
                 if(data.status == 401){
                     console.log(t);
-                    //openLoginModal(t);
                 };
             }
         })
-    }else{
-
     }
       return [{
           icon: MP_ICON,
