@@ -4,6 +4,13 @@ $.ajaxSetup({
     }
 });
 
+var MP_API_URL = 'https://api.moneypenny.me/';
+
+var _MP_TOKEN = {
+    tenant:'_____',
+    token: ''
+};
+
 var _mpAjax = function (options) {
     var default_options = {
         method: 'GET',
@@ -12,10 +19,12 @@ var _mpAjax = function (options) {
         success: undefined,
         error: undefined
     };
+    options.url = MP_API_URL + _MP_TOKEN.tenant + '/' + options.url +'?token=' + _MP_TOKEN.token;
     $.extend(true, options, default_options);
     $.ajax({
-        method: method,
-        data: params,
+        url: options.url,
+        method: options.method,
+        data: options.params,
         error: function (jqXHR) {
             var response = jqXHR.responseJSON;
             if(options.error){
@@ -54,7 +63,8 @@ var isMPAutorized = function () {
     if(localStorage.getItem('mp_token')){
         var mp_token = JSON.parse(localStorage.getItem('mp_token'));
         if(mp_token.hasAttribute('tenant') && mp_token.hasAttribute('token')){
-
+            _MP_TOKEN = mp_token;
+            result = true;
         }
     }
     return result;
@@ -83,7 +93,8 @@ $(function(){
                 var data = data.data;
                 var mp_token = {
                     tenant: $('#tenant_name').val(),
-                    token: data.access_token
+                    token: data.access_token,
+                    expires: data.expires
                 };
                 localStorage.setItem('mp_token', JSON.stringify(mp_token));
                 var t = window.TrelloPowerUp.iframe();

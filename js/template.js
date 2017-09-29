@@ -45,8 +45,18 @@ var cardButtonCallback = function(t){
 
 TrelloPowerUp.initialize({
   'card-buttons': function(t, options) {
-    if(localStorage.getItem('mp_token')){
-
+    if(isMPAutorized()){
+        _mpAjax({
+            method: 'GET',
+            url: 'timer/status',
+            params: {},
+            success: function (data) {
+                console.log(data)
+            },
+            error: function (data) {
+                console.log('error',data);
+            }
+        })
     }
     return [{
       icon: MP_ICON,
