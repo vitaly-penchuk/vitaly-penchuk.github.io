@@ -35,35 +35,47 @@ var isTrelloAuthorized = function () {
 
 
 var cardButtonCallback = function (t) {
+    /*
     if (isMPAutorized()) {
-
-    } else {
-        return openLoginModal(t);
+        _mpAjax({
+            method: 'GET',
+            url: 'timer/status',
+            async: false,
+            params: {},
+            success: function (response) {
+                var data = response.data
+            },
+            error: function (data) {
+                if (data.status == 401) {
+                    localStorage.removeItem('mp_token');
+                }
+            }
+        });
     }
+    */
+    var items = [];
+    if (isMPAutorized()) {
+        items.push({
+            text: 'Track time',
+            callback:openTimerCallback
+        });
+    } else {
+        items.push({
+            text: 'Setup MoneyPenny account',
+            callback:openLoginModal
+        });
+    }
+    return t.popup({
+        title: 'MoneyPenny',
+        items: items
+    })
 };
 
 TrelloPowerUp.initialize({
     'card-buttons': function (t, options) {
-        var button_name = 'Start timer';
-        if (isMPAutorized()) {
-            _mpAjax({
-                method: 'GET',
-                url: 'timer/status',
-                async: false,
-                params: {},
-                success: function (data) {
-                    console.log(data)
-                },
-                error: function (data) {
-                    if (data.status == 401) {
-                        localStorage.removeItem('mp_token');
-                    }
-                }
-            });
-        }
         return [{
             icon: MP_ICON,
-            text: button_name,
+            text: 'MoneyPenny',
             callback: cardButtonCallback
         }];
     },

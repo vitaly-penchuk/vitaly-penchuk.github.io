@@ -16,7 +16,7 @@ var _mpAjax = function (options) {
         params: {},
         success: undefined,
         error: undefined,
-        async: true,
+        async: true
     };
     options = $.extend(true, default_options,options);
     options.url = MP_API_URL + _MP_TOKEN.tenant + '/' + options.url +'?token=' + _MP_TOKEN.token;
