@@ -4,7 +4,7 @@ $(function () {
 
     _mpAjax({
         method: 'GET',
-        url: '/timer/projects',
+        url: 'timer/projects',
         params: {},
         success: function (response) {
             var data = response.data;
