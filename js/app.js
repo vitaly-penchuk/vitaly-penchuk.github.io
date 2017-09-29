@@ -14,12 +14,11 @@ var _MP_TOKEN = {
 var _mpAjax = function (options) {
     var default_options = {
         method: 'GET',
-        url: '',
         params: {},
         success: undefined,
         error: undefined
     };
-    $.extend(true, options, default_options);
+    options = $.extend(true, default_options,options);
     options.url = MP_API_URL + _MP_TOKEN.tenant + '/' + options.url +'?token=' + _MP_TOKEN.token;
     console.log(options);
     $.ajax({
