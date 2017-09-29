@@ -1,6 +1,5 @@
 $.ajaxSetup({
     complete : function (jqXHR,textStatus) {
-        console.log(jqXHR,textStatus);
     }
 });
 
@@ -20,7 +19,6 @@ var _mpAjax = function (options) {
     };
     options = $.extend(true, default_options,options);
     options.url = MP_API_URL + _MP_TOKEN.tenant + '/' + options.url +'?token=' + _MP_TOKEN.token;
-    console.log(options);
     $.ajax({
         url: options.url,
         method: options.method,

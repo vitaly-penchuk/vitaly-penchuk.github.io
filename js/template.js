@@ -51,10 +51,10 @@ TrelloPowerUp.initialize({
             url: 'timer/status',
             params: {},
             success: function (data) {
-                console.log(data)
             },
             error: function (data) {
                 if(data.status == 401){
+                    console.log(t);
                     openLoginModal(t);
                 };
             }
