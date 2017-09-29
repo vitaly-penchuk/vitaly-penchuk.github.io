@@ -23,8 +23,7 @@ var mpAjax = function (options) {
 };
 
 
-var openLoginModal = function () {
-    var t = window.TrelloPowerUp.iframe();
+var openLoginModal = function (t) {
     return t.modal({
         title: 'Timer',
         url: './timer.html',
