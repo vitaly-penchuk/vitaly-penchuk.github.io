@@ -44,31 +44,28 @@ var cardButtonCallback = function (t) {
 
 TrelloPowerUp.initialize({
     'card-buttons': function (t, options) {
+        var button_name = 'Start timer';
         if (isMPAutorized()) {
             _mpAjax({
                 method: 'GET',
                 url: 'timer/status',
+                async: false,
                 params: {},
                 success: function (data) {
-                    return [{
-                        icon: MP_ICON,
-                        text: 'Start timer 123',
-                        callback: cardButtonCallback
-                    }];
+                    console.log(data)
                 },
                 error: function (data) {
                     if (data.status == 401) {
                         localStorage.removeItem('mp_token');
                     }
                 }
-            })
-        }else{
-            return [{
-                icon: MP_ICON,
-                text: 'Start timer',
-                callback: cardButtonCallback
-            }];
+            });
         }
+        return [{
+            icon: MP_ICON,
+            text: button_name,
+            callback: cardButtonCallback
+        }];
     },
     'show-settings': function (t, options) {
         return t.popup({
