@@ -24,6 +24,8 @@ $(function(){
                     token: data.access_token
                 };
                 localStorage.setItem('mp_token', JSON.stringify(mp_token));
+                var t = window.TrelloPowerUp.iframe();
+                t.closeModal();
             }
         });
     });
