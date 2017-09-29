@@ -62,6 +62,7 @@ var isMPAutorized = function () {
     var result = false;
     if(localStorage.getItem('mp_token')){
         var mp_token = JSON.parse(localStorage.getItem('mp_token'));
+        console.log(mp_token);
         if(mp_token.hasAttribute('tenant') && mp_token.hasAttribute('token')){
             _MP_TOKEN = mp_token;
             result = true;
