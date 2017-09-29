@@ -60,12 +60,13 @@ TrelloPowerUp.initialize({
             }
         })
     }else{
-        return [{
-            icon: MP_ICON,
-            text: 'Start timer',
-            callback: cardButtonCallback
-        }];
+
     }
+      return [{
+          icon: MP_ICON,
+          text: 'Start timer',
+          callback: cardButtonCallback
+      }];
   },
   'show-settings': function(t, options){
     return t.popup({
