@@ -71,11 +71,11 @@ TrelloPowerUp.initialize({
     'card-badges':function (t, options) {
         return t.cards('all')
             .then(function (cards) {
+                console.log(cards);
                 return [{
                     dynamic: function(cards) {
                         // we could also return a Promise that resolves to
                         // this as well if we needed to do something async first
-                        console.log(cards);
                         return {
                             text: 'Dynamic ' + (Math.random() * 100).toFixed(0).toString(),
                             color: 'green',
