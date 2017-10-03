@@ -76,17 +76,17 @@ $(function () {
         getMPTimerStatus();
     }
 
+    var t = window.TrelloPowerUp.iframe();
+    t.render(function () {
+        t.card('badges')
+            .then(function (card) {
+                console.log(card);
+            })
+    });
+
     setInterval(function () {
         if(isMPAutorized()){
             getMPTimerStatus();
         }
-        var t = window.TrelloPowerUp.iframe();
-        t.render(function () {
-            t.card('badges')
-                .then(function (card) {
-                    console.log(card);
-                })
-        });
-
     },60000);
 })
