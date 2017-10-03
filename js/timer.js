@@ -23,19 +23,12 @@ $(function () {
             params: {},
             success: function (response) {
                 var data = response.data;
-                var optgroups = {};
                 task_dd.html('').val('');
                 task_dd.append('<option value=""></option>');
-                console.log(data);
-                /*
-                $.each(data,function (index, project) {
-                    if(!optgroups.hasOwnProperty(project.client_name)){
-                        optgroups[project.client_name] = $('<optgroup label="'+project.client_name+'">');
-                        project_dd.append(optgroups[project.client_name]);
-                    }
-                    optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
+                $.each(data,function (index, task) {
+                    task_dd.append('<option value="'+task.id+'">'+task.name+'</option>')
                 });
-                */
+
             }
         });
     };
