@@ -2,6 +2,40 @@ $(function () {
     var t = window.TrelloPowerUp.iframe();
     t.sizeTo('.container');
 
+    var project_dd = $('#project_id');
+
+    var task_dd = $('#task_id');
+
+    project_dd.on('change',function (e) {
+       var node = $(this);
+       var val = node.val();
+
+    });
+
+    var populateTasks = function (project_id) {
+        _mpAjax({
+            method: 'GET',
+            url: 'timer/project/'+project_id+'/tasks',
+            params: {},
+            success: function (response) {
+                var data = response.data;
+                var optgroups = {};
+                task_dd.html('').val('');
+                task_dd.append('<option value=""></option>');
+                console.log(data);
+                /*
+                $.each(data,function (index, project) {
+                    if(!optgroups.hasOwnProperty(project.client_name)){
+                        optgroups[project.client_name] = $('<optgroup label="'+project.client_name+'">');
+                        project_dd.append(optgroups[project.client_name]);
+                    }
+                    optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
+                });
+                */
+            }
+        });
+    };
+
     if(isMPAutorized()){
         _mpAjax({
             method: 'GET',
@@ -10,12 +44,12 @@ $(function () {
             success: function (response) {
                 var data = response.data;
                 var optgroups = {};
-                var dd = $('#project_id');
-                dd.append('<option value=""></option>');
+                project_dd.html('').val('');
+                project_dd.append('<option value=""></option>');
                 $.each(data,function (index, project) {
                     if(!optgroups.hasOwnProperty(project.client_name)){
                         optgroups[project.client_name] = $('<optgroup label="'+project.client_name+'">');
-                        dd.append(optgroups[project.client_name]);
+                        project_dd.append(optgroups[project.client_name]);
                     }
                     optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
                 });
