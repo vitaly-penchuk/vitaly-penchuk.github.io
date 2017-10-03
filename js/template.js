@@ -67,24 +67,6 @@ TrelloPowerUp.initialize({
             url: './settings.html',
             height: 184
         });
-    },
-    'card-badges':function (t, options) {
-        return t.card()
-            .then(function (cardData) {
-                return [{
-                    dynamic: function(cardData) {
-                        if(localStorage.getItem('mp_timer')){
-                            return {
-                                text: 'Timer',
-                                color: 'green',
-                                refresh: 10 // in seconds
-                            };
-                        }else{
-                            return [];
-                        }
-                    }
-                }]
-            });
     }
 });
 
