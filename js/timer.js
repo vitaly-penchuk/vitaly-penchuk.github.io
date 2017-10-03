@@ -35,7 +35,7 @@ $(function () {
                 });
             }
         });
-    }
+    };
 
     var populateTasks = function (project_id) {
         _mpAjax({
@@ -61,6 +61,7 @@ $(function () {
             params: {},
             success: function (response) {
                 var data = response.data;
+                console.log(data);
                 populateProjects();
             },
             error: function (data) {
