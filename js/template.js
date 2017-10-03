@@ -69,18 +69,19 @@ TrelloPowerUp.initialize({
         });
     },
     'card-badges':function (t, options) {
-        return t.cards('all')
-            .then(function (cards) {
-                console.log(cards);
+        return t.card()
+            .then(function (cardData) {
                 return [{
-                    dynamic: function(cards) {
-                        // we could also return a Promise that resolves to
-                        // this as well if we needed to do something async first
-                        return {
-                            text: 'Dynamic ' + (Math.random() * 100).toFixed(0).toString(),
-                            color: 'green',
-                            refresh: 10 // in seconds
-                        };
+                    dynamic: function(cardData) {
+                        if(localStorage.getItem('mp_timer')){
+                            return {
+                                text: 'Timer',
+                                color: 'green',
+                                refresh: 10 // in seconds
+                            };
+                        }else{
+                            return [];
+                        }
                     }
                 }]
             });

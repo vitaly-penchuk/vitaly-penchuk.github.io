@@ -73,6 +73,26 @@ var isMPAutorized = function () {
     return result;
 };
 
+var getMPTimerStatus = function (callback) {
+    _mpAjax({
+        method: 'GET',
+        url: 'timer/status',
+        params: {},
+        success: function (response) {
+            var data = response.data;
+            localStorage.setItem('mp_timer',JSON.stringify(data));
+            if(typeof callback == 'function'){
+                callback(data.project_id,data.task_id,populateTasks);
+            }
+        },
+        error: function (data) {
+            if (data.status == 401) {
+                localStorage.removeItem('mp_token');
+            }
+        }
+    });
+};
+
 $(function(){
     var options = {
         error : function (data) {

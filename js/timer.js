@@ -59,19 +59,6 @@ $(function () {
     };
 
     if(isMPAutorized()){
-        _mpAjax({
-            method: 'GET',
-            url: 'timer/status',
-            params: {},
-            success: function (response) {
-                var data = response.data;
-                populateProjects(data.project_id,data.task_id,populateTasks);
-            },
-            error: function (data) {
-                if (data.status == 401) {
-                    localStorage.removeItem('mp_token');
-                }
-            }
-        });
+        getMPTimerStatus(populateProjects);
     }
 });
