@@ -9,7 +9,11 @@ $(function () {
     project_dd.on('change',function (e) {
        var node = $(this);
        var val = node.val();
-
+       if(val != ''){
+           populateTasks(val);
+       }else{
+           task_dd.html('').val('');
+       }
     });
 
     var populateTasks = function (project_id) {
