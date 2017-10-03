@@ -34,7 +34,7 @@ $(function () {
                     optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
                 });
                 project_dd.val(project_id);
-                if (typeof callback == "function"){
+                if (typeof callback == "function" && task_id){
                     callback(project_id,task_id);
                 }
             }
