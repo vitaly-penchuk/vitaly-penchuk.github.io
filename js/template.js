@@ -87,3 +87,9 @@ TrelloPowerUp.initialize({
             });
     }
 });
+
+$(function () {
+    setTimeout(function () {
+        getMPTimerStatus()
+    },60000);
+})
