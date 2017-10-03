@@ -16,6 +16,27 @@ $(function () {
        }
     });
 
+    var populateProjects = function () {
+        _mpAjax({
+            method: 'GET',
+            url: 'timer/projects',
+            params: {},
+            success: function (response) {
+                var data = response.data;
+                var optgroups = {};
+                project_dd.html('').val('');
+                project_dd.append('<option value=""></option>');
+                $.each(data,function (index, project) {
+                    if(!optgroups.hasOwnProperty(project.client_name)){
+                        optgroups[project.client_name] = $('<optgroup label="'+project.client_name+'">');
+                        project_dd.append(optgroups[project.client_name]);
+                    }
+                    optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
+                });
+            }
+        });
+    }
+
     var populateTasks = function (project_id) {
         _mpAjax({
             method: 'GET',
@@ -36,29 +57,11 @@ $(function () {
     if(isMPAutorized()){
         _mpAjax({
             method: 'GET',
-            url: 'timer/projects',
-            params: {},
-            success: function (response) {
-                var data = response.data;
-                var optgroups = {};
-                project_dd.html('').val('');
-                project_dd.append('<option value=""></option>');
-                $.each(data,function (index, project) {
-                    if(!optgroups.hasOwnProperty(project.client_name)){
-                        optgroups[project.client_name] = $('<optgroup label="'+project.client_name+'">');
-                        project_dd.append(optgroups[project.client_name]);
-                    }
-                    optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
-                });
-            }
-        });
-
-        _mpAjax({
-            method: 'GET',
             url: 'timer/status',
             params: {},
             success: function (response) {
                 var data = response.data;
+                populateProjects();
             },
             error: function (data) {
                 if (data.status == 401) {
