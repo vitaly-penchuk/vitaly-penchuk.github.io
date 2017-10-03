@@ -78,7 +78,8 @@ $(function () {
 
     var t = window.TrelloPowerUp.iframe();
     t.render(function () {
-        t.card('all')
+        t.card('badges')
+            .get('badges')
             .then(function (card) {
                 console.log(JSON.stringify(card, null, 2));
             })
