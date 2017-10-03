@@ -62,7 +62,7 @@ $(function () {
             params: {},
             success: function (response) {
                 var data = response.data;
-
+                console.log(data);
                 populateProjects();
             },
             error: function (data) {
