@@ -9,7 +9,15 @@ $(function () {
             params: {},
             success: function (response) {
                 var data = response.data;
-                console.log(data);
+                var optgroups = {};
+                var dd = $('#project_id');
+                $.each(data,function (index, project) {
+                    if(!optgroups.hasOwnProperty(project.client_name)){
+                        optgroups[project.client_name] = $('<optgroup label="'+project.client_name+'">');
+                        dd.append(optgroups[project.client_name]);
+                    }
+                    optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
+                });
             }
         });
 
