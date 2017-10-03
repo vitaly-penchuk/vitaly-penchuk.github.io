@@ -81,6 +81,7 @@ var getMPTimerStatus = function (callback) {
         success: function (response) {
             var data = response.data;
             localStorage.setItem('mp_timer',JSON.stringify(data));
+            console.log(data);
             if(typeof callback == 'function'){
                 callback(data.project_id,data.task_id,populateTasks);
             }
