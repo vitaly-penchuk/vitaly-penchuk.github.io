@@ -16,7 +16,7 @@ $(function () {
        }
     });
 
-    var populateProjects = function () {
+    var populateProjects = function (project_id) {
         _mpAjax({
             method: 'GET',
             url: 'timer/projects',
@@ -33,6 +33,7 @@ $(function () {
                     }
                     optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
                 });
+                project_dd.val(project_id);
             }
         });
     };
@@ -61,7 +62,7 @@ $(function () {
             params: {},
             success: function (response) {
                 var data = response.data;
-                console.log(data);
+
                 populateProjects();
             },
             error: function (data) {
