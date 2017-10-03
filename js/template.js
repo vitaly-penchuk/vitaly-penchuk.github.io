@@ -90,12 +90,12 @@ TrelloPowerUp.initialize({
 
 $(function () {
 
-    if(isMPAutorized){
+    if(isMPAutorized()){
         getMPTimerStatus();
     }
 
     setInterval(function () {
-        if(isMPAutorized){
+        if(isMPAutorized()){
             getMPTimerStatus();
         }
     },60000);
