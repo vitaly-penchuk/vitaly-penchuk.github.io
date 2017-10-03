@@ -16,7 +16,7 @@ $(function () {
        }
     });
 
-    var populateProjects = function (project_id) {
+    var populateProjects = function (project_id,task_id, callback) {
         _mpAjax({
             method: 'GET',
             url: 'timer/projects',
@@ -34,11 +34,14 @@ $(function () {
                     optgroups[project.client_name].append('<option value="'+project.id+'">'+project.name+'</option>')
                 });
                 project_dd.val(project_id);
+                if (typeof callback == "function"){
+                    callback(project_id,task_id);
+                }
             }
         });
     };
 
-    var populateTasks = function (project_id) {
+    var populateTasks = function (project_id,task_id) {
         _mpAjax({
             method: 'GET',
             url: 'timer/project/'+project_id+'/tasks',
@@ -50,7 +53,7 @@ $(function () {
                 $.each(data,function (index, task) {
                     task_dd.append('<option value="'+task.id+'">'+task.name+'</option>')
                 });
-
+                task_dd.val(task_id);
             }
         });
     };
@@ -62,8 +65,8 @@ $(function () {
             params: {},
             success: function (response) {
                 var data = response.data;
-                console.log(data);
-                populateProjects();
+                console.log(data.project_id);
+                populateProjects(project_id,data.task_id,populateTasks);
             },
             error: function (data) {
                 if (data.status == 401) {
