@@ -66,7 +66,7 @@ $(function () {
             success: function (response) {
                 var data = response.data;
                 console.log(data.project_id);
-                populateProjects(project_id,data.task_id,populateTasks);
+                populateProjects(data.project_id,data.task_id,populateTasks);
             },
             error: function (data) {
                 if (data.status == 401) {
