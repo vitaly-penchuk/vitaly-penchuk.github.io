@@ -80,7 +80,7 @@ $(function () {
     t.render(function () {
         t.card('all')
             .then(function (card) {
-                console.log(card);
+                console.log(JSON.stringify(card, null, 2));
             })
     });
 
