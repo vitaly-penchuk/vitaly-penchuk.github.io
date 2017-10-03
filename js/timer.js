@@ -11,6 +11,7 @@ $(function () {
                 var data = response.data;
                 var optgroups = {};
                 var dd = $('#project_id');
+                dd.append('<option value=""></option>');
                 $.each(data,function (index, project) {
                     if(!optgroups.hasOwnProperty(project.client_name)){
                         optgroups[project.client_name] = $('<optgroup label="'+project.client_name+'">');
